@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="demo" ng-controller="waitCtrl">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script data-require="angular.js@1.3.10" data-semver="1.3.10" src="https://code.angularjs.org/1.3.10/angular.js"></script>
+    <script src="script.js"></script>
+    <title>Waitstaff Calculator</title>
+</head>
+<body>
+  <div class="page_wrap">
+    <h1>Waitstaff Calculator</h1>
+  <div class='meal'>
+    <form name='userSubmit' ng-submit='submitDetails()' novalidate>
+        <h3>Enter Meal Details</h3>
+      <div><span class="label" for='basePrice'>Base Meal Price $</span><input ng-model='basePrice'required type='number'></div>
+      <div><span class="label" for='taxRate'>Tax Rate %</span><input ng-model='taxRate' required type='number'></div>
+      <div><span class="label" for='tipPercent'>Tip Percentage %</span><input ng-model='tipPercent'required type='number'></div>
+      <div class = 'error' ng-show = "formError !=''">Please Enter Values</div>
+      <div class='buttom_wrap'>
+         <button ng-click='resetDetails()'>Cancel</button>
+        <input type="submit" value="Submit">
+      
+      </div><!
+     </form><!-- - /userSubmit - -->
+  </div><!--/meal-->
+
+ <div class='updates'>
+  <div class='customerCharges'>
+        <h3>Customer Charges</h3>
+        <div><span class="label">Subtotal </span><span>{{subtotal | number : 2}}</span></div>
+        <div><span class="label">Tip </span><span>{{tip | number : 2}}</span></div>
+        <hr>
+        <div><span class="label">Total </span><span>{{total | number : 2}}</span></div>
+    </div><!-- - /customerCharges - -->
+    <div class='myEarnings'>
+      <h3>My Earnings Info</h3>
+      <div><span class="label">Tip Total:$ </span><span>{{tipTotal | number:2}}</span></div>
+      <div><span class="label">Meal Count: </span><span>{{mealCount | number: 0}}</span></div>
+      <div><span class="label">Avg Tip Per Meal:$ </span><span>{{avgTip | number: 2}}</span></div>
+      </div><!-- - /myEarnings - -->
+      <div class="buttom_wrap">
+        <button id='resetButton' ng-click='init()'>Reset Page</button>
+      </div><!-- - /buttom_wrap - -->
+    </div><!--/updates-->
+  </div><!-- - /page_wrap - -->
+ </body>
+</html>
